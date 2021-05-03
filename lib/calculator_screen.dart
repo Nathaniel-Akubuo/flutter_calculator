@@ -39,9 +39,9 @@ class CalculatorScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Text(
-                                  (calculator.firstOperand == null)
+                                  (calculator.firstNumber == null)
                                       ? '0'
-                                      : '${calculator.firstOperand}',
+                                      : '${calculator.firstNumber}',
                                   textAlign: TextAlign.right,
                                   style: TextStyle(
                                       fontSize: 20, color: kNeonColor),
@@ -55,9 +55,9 @@ class CalculatorScreen extends StatelessWidget {
                                       fontSize: 20, color: kNeonColor),
                                 ),
                                 Text(
-                                  (calculator.secondOperand == null)
+                                  (calculator.secondNumber == null)
                                       ? ''
-                                      : '${calculator.secondOperand}',
+                                      : '${calculator.secondNumber}',
                                   textAlign: TextAlign.right,
                                   style: TextStyle(
                                       fontSize: 20, color: kNeonColor),
@@ -87,19 +87,19 @@ class CalculatorScreen extends StatelessWidget {
                         number: '7',
                         textColor: kTextColor,
                         buttonColor: kBackgroundColor,
-                        onTap: () => calculator.numberPressed(7),
+                        onTap: () => calculator.numberPressed('7'),
                       ),
                       CalculatorButton(
                         number: '8',
                         textColor: kTextColor,
                         buttonColor: kBackgroundColor,
-                        onTap: () => calculator.numberPressed(8),
+                        onTap: () => calculator.numberPressed('8'),
                       ),
                       CalculatorButton(
                         number: '9',
                         textColor: kTextColor,
                         buttonColor: kBackgroundColor,
-                        onTap: () => calculator.numberPressed(9),
+                        onTap: () => calculator.numberPressed('9'),
                       ),
                       CalculatorButton(
                           number: '×',
@@ -115,18 +115,18 @@ class CalculatorScreen extends StatelessWidget {
                         number: '4',
                         textColor: kTextColor,
                         buttonColor: kBackgroundColor,
-                        onTap: () => calculator.numberPressed(4),
+                        onTap: () => calculator.numberPressed('4'),
                       ),
                       CalculatorButton(
                           number: '5',
                           textColor: kTextColor,
                           buttonColor: kBackgroundColor,
-                          onTap: () => calculator.numberPressed(5)),
+                          onTap: () => calculator.numberPressed('5')),
                       CalculatorButton(
                           number: '6',
                           textColor: kTextColor,
                           buttonColor: kBackgroundColor,
-                          onTap: () => calculator.numberPressed(6)),
+                          onTap: () => calculator.numberPressed('6')),
                       CalculatorButton(
                           number: '-',
                           textColor: Colors.black,
@@ -141,17 +141,17 @@ class CalculatorScreen extends StatelessWidget {
                           number: '1',
                           textColor: kTextColor,
                           buttonColor: kBackgroundColor,
-                          onTap: () => calculator.numberPressed(1)),
+                          onTap: () => calculator.numberPressed('1')),
                       CalculatorButton(
                           number: '2',
                           textColor: kTextColor,
                           buttonColor: kBackgroundColor,
-                          onTap: () => calculator.numberPressed(2)),
+                          onTap: () => calculator.numberPressed('2')),
                       CalculatorButton(
                           number: '3',
                           textColor: kTextColor,
                           buttonColor: kBackgroundColor,
-                          onTap: () => calculator.numberPressed(3)),
+                          onTap: () => calculator.numberPressed('3')),
                       CalculatorButton(
                         number: '+',
                         textColor: Colors.black,
@@ -167,11 +167,12 @@ class CalculatorScreen extends StatelessWidget {
                           number: '0',
                           textColor: kTextColor,
                           buttonColor: kBackgroundColor,
-                          onTap: () => calculator.numberPressed(0)),
+                          onTap: () => calculator.numberPressed('0')),
                       CalculatorButton(
                         number: '.',
                         textColor: kTextColor,
                         buttonColor: kBackgroundColor,
+                        onTap: () => calculator.numberPressed('.'),
                       ),
                       CalculatorButton(
                         number: '=',

@@ -1,34 +1,34 @@
 import 'package:flutter/foundation.dart';
 
 class Calculator extends ChangeNotifier {
-  int firstOperand;
+  String firstNumber;
   String operator;
-  int secondOperand;
-  int result;
+  String secondNumber;
+  String result;
 
-  void numberPressed(int number) {
-    if (firstOperand == null) {
-      firstOperand = number;
+  void numberPressed(String number) {
+    if (firstNumber == null) {
+      firstNumber = number;
       notifyListeners();
       return;
     }
     if (operator == null) {
-      firstOperand = int.parse('$firstOperand$number');
+      firstNumber = firstNumber + number;
       notifyListeners();
       return;
     }
-    if (secondOperand == null) {
-      secondOperand = number;
+    if (secondNumber == null) {
+      secondNumber = number;
       notifyListeners();
       return;
     }
-    secondOperand = int.parse('$secondOperand$number');
+    secondNumber = secondNumber + number;
     notifyListeners();
   }
 
   void operatorPressed(String operator) {
-    if (firstOperand == null) {
-      firstOperand = 0;
+    if (firstNumber == null) {
+      firstNumber = '0';
     }
     this.operator = operator;
     notifyListeners();
@@ -36,8 +36,8 @@ class Calculator extends ChangeNotifier {
 
   void clear() {
     result = null;
-    firstOperand = null;
-    secondOperand = null;
+    firstNumber = null;
+    secondNumber = null;
     operator = null;
     notifyListeners();
   }
@@ -45,19 +45,24 @@ class Calculator extends ChangeNotifier {
   void calculate() {
     switch (operator) {
       case '+':
-        result = firstOperand + secondOperand;
+        result =
+            (double.parse(firstNumber) + double.parse(secondNumber)).toString();
         break;
       case '-':
-        result = firstOperand - secondOperand;
+        result =
+            (double.parse(firstNumber) - double.parse(secondNumber)).toString();
         break;
       case '×':
-        result = firstOperand * secondOperand;
+        result =
+            (double.parse(firstNumber) * double.parse(secondNumber)).toString();
+        ;
         break;
       case '÷':
-        if (secondOperand == 0) {
+        if (secondNumber == '0') {
           return;
         }
-        result = firstOperand ~/ secondOperand;
+        result =
+            (double.parse(firstNumber) / double.parse(secondNumber)).toString();
         break;
     }
     notifyListeners();
