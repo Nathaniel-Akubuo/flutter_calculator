@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_calculator/widgets/number_buttons.dart';
 import 'package:provider/provider.dart';
-import 'util/theme_colors.dart';
+import 'util/theme.dart';
 import 'util/calculator.dart';
 
 // ignore: must_be_immutable
