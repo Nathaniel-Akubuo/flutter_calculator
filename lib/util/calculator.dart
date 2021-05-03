@@ -55,7 +55,6 @@ class Calculator extends ChangeNotifier {
       case '×':
         result =
             (double.parse(firstNumber) * double.parse(secondNumber)).toString();
-        ;
         break;
       case '÷':
         if (secondNumber == '0') {
