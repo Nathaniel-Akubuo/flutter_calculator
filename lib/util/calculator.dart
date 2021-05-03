@@ -28,10 +28,17 @@ class Calculator extends ChangeNotifier {
 
   void operatorPressed(String operator) {
     if (firstNumber == null) {
-      firstNumber = '0';
+      if (operator == '-') {
+        firstNumber = operator;
+        notifyListeners();
+      } else {
+        firstNumber = '0';
+        notifyListeners();
+      }
+    } else {
+      this.operator = operator;
+      notifyListeners();
     }
-    this.operator = operator;
-    notifyListeners();
   }
 
   void clear() {
