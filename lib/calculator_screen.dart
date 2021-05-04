@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_calculator/widgets/number_buttons.dart';
 import 'package:provider/provider.dart';
-import 'util/theme.dart';
+import 'util/themes.dart';
 import 'util/calculator.dart';
 
 // ignore: must_be_immutable
@@ -12,7 +12,7 @@ class CalculatorScreen extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => Themes(),
       child: Consumer<Themes>(
-        builder: (context, themes, child){
+        builder: (context, themes, child) {
           var themes = Provider.of<Themes>(context, listen: false);
           return SafeArea(
             child: Scaffold(
@@ -21,7 +21,8 @@ class CalculatorScreen extends StatelessWidget {
                 padding: EdgeInsets.all(8.0),
                 child: Consumer<Calculator>(
                   builder: (context, calculator, child) {
-                    var calculator = Provider.of<Calculator>(context, listen: false);
+                    var calculator =
+                        Provider.of<Calculator>(context, listen: false);
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -36,11 +37,13 @@ class CalculatorScreen extends StatelessWidget {
                                 Text(
                                   (calculator.result == null)
                                       ? '0'
-                                      : '${calculator.result}',
-                                  style: TextStyle(fontSize: 70, color: kTextColor),
+                                      : '${calculator.result.toStringAsFixed(2)}',
+                                  style: TextStyle(
+                                      fontSize: 50, color: kTextColor),
                                 ),
+                                SizedBox(height: 20),
                                 Padding(
-                                  padding: EdgeInsets.all(8.0),
+                                  padding: EdgeInsets.all(10),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
@@ -82,7 +85,7 @@ class CalculatorScreen extends StatelessWidget {
                               number: 'AC',
                               textColor: kNeonColor,
                               buttonColor: kBackgroundColor,
-                              onTap: () => calculator.clear(),
+                              onTap: () => calculator.clearAll(),
                             ),
                             CalculatorButton(
                               number: '+/-',
@@ -91,9 +94,10 @@ class CalculatorScreen extends StatelessWidget {
                               onTap: () => calculator.numberPressed('+/-'),
                             ),
                             CalculatorButton(
-                              number: '%',
+                              number: 'C',
                               textColor: kTextColor,
                               buttonColor: kBackgroundColor,
+                              onTap: () => calculator.clear(),
                             ),
                             CalculatorButton(
                               number: '÷',
@@ -199,7 +203,7 @@ class CalculatorScreen extends StatelessWidget {
                             ),
                             IconButton(
                               icon: themes.themeIcon,
-                              iconSize: 50,
+                              iconSize: 45,
                               onPressed: () {
                                 themes.toggleTheme();
                               },

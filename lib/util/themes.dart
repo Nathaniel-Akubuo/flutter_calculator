@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 
-Color kBackgroundColor = Color(0xff2E2C39);
+Color kBackgroundColor = Color(0xff2F2B39);
 Color kNeonColor = Color(0xff7D5DFE);
 Color kTextColor = Colors.white;
 Color kGreyColor = Color(0xffBFBFC1);
 Color kToggleButtonColor = Color(0xffBFBFC1);
 
 class Themes extends ChangeNotifier {
-  var themeIcon = Icon(Icons.brightness_medium, color: kToggleButtonColor);
+  var themeIcon = Icon(Icons.brightness_high, color: kToggleButtonColor);
 
   void toggleTheme() {
     if (kTextColor == Colors.white) {
@@ -23,9 +22,9 @@ class Themes extends ChangeNotifier {
     } else {
       //switch to dark theme
       kTextColor = Colors.white;
-      kBackgroundColor = Color(0xff2E2C39);
+      kBackgroundColor = Color(0xff2F2B39);
       kGreyColor = Color(0xffBFBFC1);
-      themeIcon = Icon(Icons.brightness_medium, color: kGreyColor);
+      themeIcon = Icon(Icons.brightness_high, color: kGreyColor);
       kToggleButtonColor = kGreyColor;
       notifyListeners();
     }
