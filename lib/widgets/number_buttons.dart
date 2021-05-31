@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class CalculatorButton extends StatelessWidget {
   final Color buttonColor;
@@ -21,7 +22,7 @@ class CalculatorButton extends StatelessWidget {
             child: Text(
               number,
               style: TextStyle(
-                  fontSize: 20, fontWeight: FontWeight.w600, color: textColor),
+                  fontSize: 25, fontWeight: FontWeight.bold, color: textColor),
             ),
           ),
           decoration: BoxDecoration(color: buttonColor, shape: BoxShape.circle),

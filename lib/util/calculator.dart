@@ -20,7 +20,7 @@ class Calculator extends ChangeNotifier {
     }
 
     if (operator == null) {
-      if (firstNumber.contains('.')&&number.contains('.')) {
+      if (firstNumber.contains('.') && number.contains('.')) {
         return;
       } else {
         firstNumber = firstNumber + number;
@@ -29,7 +29,7 @@ class Calculator extends ChangeNotifier {
       }
     }
 
-    if (secondNumber == null|| secondNumber =='') {
+    if (secondNumber == null || secondNumber == '') {
       if (number == '.') {
         secondNumber = '0.';
         notifyListeners();
@@ -40,7 +40,7 @@ class Calculator extends ChangeNotifier {
         return;
       }
     } else {
-      if (secondNumber.contains('.')&&number.contains('.')) {
+      if (secondNumber.contains('.') && number.contains('.')) {
         return;
       }
       secondNumber = secondNumber + number;
@@ -52,15 +52,13 @@ class Calculator extends ChangeNotifier {
     if (firstNumber == null) {
       if (operator == '-') {
         firstNumber = operator;
-        notifyListeners();
       } else {
         firstNumber = '0';
-        notifyListeners();
       }
     } else {
       this.operator = operator;
-      notifyListeners();
     }
+    notifyListeners();
   }
 
   void clearAll() {
@@ -74,23 +72,19 @@ class Calculator extends ChangeNotifier {
   void calculate() {
     switch (operator) {
       case '+':
-        result =
-            double.parse(firstNumber) + double.parse(secondNumber);
+        result = double.parse(firstNumber) + double.parse(secondNumber);
         break;
       case '-':
-        result =
-            double.parse(firstNumber) - double.parse(secondNumber);
+        result = double.parse(firstNumber) - double.parse(secondNumber);
         break;
       case '×':
-        result =
-            double.parse(firstNumber) * double.parse(secondNumber);
+        result = double.parse(firstNumber) * double.parse(secondNumber);
         break;
       case '÷':
         if (secondNumber == '0') {
           return;
         }
-        result =
-            double.parse(firstNumber) / double.parse(secondNumber);
+        result = double.parse(firstNumber) / double.parse(secondNumber);
         break;
     }
     notifyListeners();
@@ -99,10 +93,11 @@ class Calculator extends ChangeNotifier {
   void clear() {
     if (operator == null) {
       firstNumber = firstNumber.substring(0, firstNumber.length - 1);
-      notifyListeners();
-    } else {
+    } else if (operator != null && secondNumber.length != 0) {
       secondNumber = secondNumber.substring(0, secondNumber.length - 1);
-      notifyListeners();
+    } else if (operator != null && secondNumber.length == 0) {
+      operator = null;
     }
+    notifyListeners();
   }
 }
